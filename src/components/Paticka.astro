@@ -1,0 +1,46 @@
+---
+import nastaveni from '../data/nastaveni.json';
+import OdkazVen from './OdkazVen.astro';
+
+const rok = new Date().getFullYear();
+---
+
+<footer class="paticka">
+	<div class="obal">
+		<div class="paticka__mrizka">
+			<div>
+				<h2>Oddíl</h2>
+				<p>{nastaveni.nazev_oddilu}</p>
+				<p>{nastaveni.adresa_herny}</p>
+				{
+					nastaveni.email && (
+						<p>
+							<a href={`mailto:${nastaveni.email}`}>{nastaveni.email}</a>
+						</p>
+					)
+				}
+			</div>
+
+			<div>
+				<h2>Výsledky a soutěže</h2>
+				<ul>
+					<li><OdkazVen href={nastaveni.odkaz_svaz}>Šachový svaz ČR</OdkazVen></li>
+					<li><OdkazVen href={nastaveni.odkaz_oddil_v_db}>Databáze db.chess.cz</OdkazVen></li>
+				</ul>
+			</div>
+
+			<div>
+				<h2>Šachy Týnec</h2>
+				<ul>
+					<li><OdkazVen href={nastaveni.odkaz_rozcestnik}>Rozcestník aplikací</OdkazVen></li>
+					<li><OdkazVen href={nastaveni.odkaz_pgn_base}>PGN Base</OdkazVen></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="paticka__spodek">
+			<p>&copy; {rok} {nastaveni.nazev_oddilu}</p>
+			<p>{nastaveni.paticka_poznamka}</p>
+		</div>
+	</div>
+</footer>

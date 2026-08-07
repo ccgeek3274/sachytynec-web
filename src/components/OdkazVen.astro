@@ -1,0 +1,19 @@
+---
+// Odkaz mimo web – otevírá se v nové záložce a nese o tom informaci i pro čtečky.
+interface Props {
+	href: string;
+	trida?: string;
+}
+
+const { href, trida } = Astro.props;
+---
+
+<a href={href} class={trida} target="_blank" rel="noopener noreferrer">
+	<slot />
+	<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4">
+		<path d="M4.5 1.5h6v6" stroke-linecap="round" stroke-linejoin="round"></path>
+		<path d="M10.5 1.5 5 7" stroke-linecap="round"></path>
+		<path d="M9 8.5v2h-7.5V3h2" stroke-linecap="round" stroke-linejoin="round"></path>
+	</svg>
+	<span class="jen-pro-ctecky">(otevře se v nové záložce)</span>
+</a>

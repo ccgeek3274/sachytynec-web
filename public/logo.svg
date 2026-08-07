@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Šachy Týnec – TJ JAWA Brodce">
+  <rect width="64" height="64" rx="13" fill="#2e4a34"/>
+  <g fill="#ece0c8">
+    <circle cx="32" cy="19.5" r="6.8"/>
+    <path d="M25.4 28h13.2c0 3.9-2.4 5.9-3.4 8.8-.8 2.3-1 4.5-.8 6.9h-5c.2-2.4 0-4.6-.8-6.9-1-2.9-3.4-4.9-3.4-8.8z"/>
+  </g>
+  <rect x="20" y="45" width="24" height="6" rx="3" fill="#e33d00"/>
+</svg>

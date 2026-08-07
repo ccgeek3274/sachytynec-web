@@ -1,0 +1,92 @@
+---
+import { getCollection, render } from 'astro:content';
+import OdkazVen from './OdkazVen.astro';
+import nastaveni from '../data/nastaveni.json';
+
+const kontakty = (await getCollection('kontakty')).sort((a, b) => a.data.poradi - b.data.poradi);
+
+const vykreslene = await Promise.all(
+	kontakty.map(async (k) => ({ data: k.data, Popis: (await render(k)).Content }))
+);
+---
+
+<section class="sekce" aria-labelledby="nadpis-lide">
+	<div class="sekce__nadpis">
+		<h2 id="nadpis-lide">Kdo vám odpoví</h2>
+		<span class="sekce__linka" aria-hidden="true"></span>
+	</div>
+
+	<ul class="kontakty">
+		{
+			vykreslene.map(({ data, Popis }) => (
+				<li class="kontakt">
+					<h3>{data.jmeno}</h3>
+					<p class="kontakt__role">{data.role}</p>
+
+					<div class="kontakt__popis">
+						<Popis />
+					</div>
+
+					{(data.email || data.telefon) && (
+						<ul class="kontakt__spojeni">
+							{data.email && (
+								<li>
+									<a href={`mailto:${data.email}`}>{data.email}</a>
+								</li>
+							)}
+							{data.telefon && (
+								<li>
+									<a href={`tel:${data.telefon.replace(/\s/g, '')}`}>{data.telefon}</a>
+								</li>
+							)}
+						</ul>
+					)}
+				</li>
+			))
+		}
+	</ul>
+</section>
+
+<section class="sekce" aria-labelledby="nadpis-kde">
+		<div class="sekce__nadpis">
+			<h2 id="nadpis-kde">Kde nás najdete</h2>
+			<span class="sekce__linka" aria-hidden="true"></span>
+		</div>
+
+		<dl class="udaje">
+			<div>
+				<dt>Adresa herny</dt>
+				<dd>{nastaveni.adresa_herny}</dd>
+			</div>
+			{
+				nastaveni.email && (
+					<div>
+						<dt>E-mail oddílu</dt>
+						<dd>
+							<a href={`mailto:${nastaveni.email}`}>{nastaveni.email}</a>
+						</dd>
+					</div>
+				)
+			}
+			{
+				nastaveni.telefon && (
+					<div>
+						<dt>Telefon</dt>
+						<dd>
+							<a href={`tel:${nastaveni.telefon.replace(/\s/g, '')}`}>{nastaveni.telefon}</a>
+						</dd>
+					</div>
+				)
+			}
+		</dl>
+
+		{
+			nastaveni.odkaz_mapa && (
+				<div class="odkazy">
+					<OdkazVen href={nastaveni.odkaz_mapa} trida="odkaz-ven">
+						Otevřít v mapě
+					</OdkazVen>
+				</div>
+			)
+		}
+</section>

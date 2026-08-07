@@ -1,0 +1,18 @@
+# build
+dist/
+.astro/
+
+# závislosti
+node_modules/
+
+# prostředí
+.env
+.env.production
+
+# systém
+.DS_Store
+Thumbs.db
+
+# logy
+npm-debug.log*
+yarn-error.log*

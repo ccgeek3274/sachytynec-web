@@ -1,0 +1,79 @@
+---
+import { getCollection, render } from 'astro:content';
+import Zaklad from '../layouts/Zaklad.astro';
+import OdkazVen from '../components/OdkazVen.astro';
+import nastaveni from '../data/nastaveni.json';
+import { cestaKeStrance, DOMOVSKA_STRANKA } from '../utils/cesty';
+
+const vsechny = await getCollection('stranky');
+const domu = vsechny.find((s) => s.data.slug === DOMOVSKA_STRANKA);
+if (!domu) {
+	throw new Error(
+		`Žádná stránka v src/content/stranky/ nemá slug „${DOMOVSKA_STRANKA}" – domovská stránka by byla prázdná.`
+	);
+}
+const { Content } = await render(domu);
+
+// Rozcestník na ostatní stránky – bere se z jejich frontmatteru.
+const rozcestnik = vsechny
+	.filter((s) => s.data.slug !== DOMOVSKA_STRANKA && s.data.zobrazit_v_menu)
+	.sort((a, b) => a.data.poradi_v_menu - b.data.poradi_v_menu);
+---
+
+<Zaklad titulek={domu.data.titulek} popis={domu.data.popis_pro_vyhledavace ?? domu.data.perex}>
+	<section class="hero">
+		<div class="obal">
+			<span class="stitek">{nastaveni.podtitul}</span>
+			<h1>{domu.data.titulek}</h1>
+			{domu.data.perex && <p class="perex">{domu.data.perex}</p>}
+		</div>
+	</section>
+
+	<div class="obal">
+		<article class="text uzky">
+			<Content />
+		</article>
+
+		<section class="sekce" aria-labelledby="nadpis-rozcestnik">
+			<div class="sekce__nadpis">
+				<h2 id="nadpis-rozcestnik">Kam dál</h2>
+				<span class="sekce__linka" aria-hidden="true"></span>
+			</div>
+
+			<ul class="karty">
+				{
+					rozcestnik.map((s) => (
+						<li class="karta">
+							<h3>
+								<a href={cestaKeStrance(s.data.slug)}>{s.data.titulek}</a>
+							</h3>
+							{s.data.perex && <p>{s.data.perex}</p>}
+							<span class="karta__sipka" aria-hidden="true">
+								Zobrazit →
+							</span>
+						</li>
+					))
+				}
+			</ul>
+		</section>
+
+		<section class="sekce" aria-labelledby="nadpis-odkazy">
+			<div class="sekce__nadpis">
+				<h2 id="nadpis-odkazy">Odkazy</h2>
+				<span class="sekce__linka" aria-hidden="true"></span>
+			</div>
+
+			<div class="odkazy">
+				<OdkazVen href={nastaveni.odkaz_oddil_v_db} trida="odkaz-ven">
+					Výsledky a tabulky (db.chess.cz)
+				</OdkazVen>
+				<OdkazVen href={nastaveni.odkaz_svaz} trida="odkaz-ven">
+					Šachový svaz ČR
+				</OdkazVen>
+				<OdkazVen href={nastaveni.odkaz_pgn_base} trida="odkaz-ven">
+					PGN Base – prohlížeč partií
+				</OdkazVen>
+			</div>
+		</section>
+	</div>
+</Zaklad>

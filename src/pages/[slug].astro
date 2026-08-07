@@ -1,0 +1,45 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Zaklad from '../layouts/Zaklad.astro';
+import Druzstva from '../components/Druzstva.astro';
+import Kontakty from '../components/Kontakty.astro';
+import { DOMOVSKA_STRANKA } from '../utils/cesty';
+
+// Každý soubor v src/content/stranky/ (kromě domu.md) dostane vlastní adresu.
+export const getStaticPaths: GetStaticPaths = async () => {
+	const stranky = await getCollection('stranky');
+	return stranky
+		.filter((s) => s.data.slug !== DOMOVSKA_STRANKA)
+		.map((s) => ({ params: { slug: s.data.slug }, props: { stranka: s } }));
+};
+
+interface Props {
+	stranka: CollectionEntry<'stranky'>;
+}
+
+const { stranka } = Astro.props;
+const { Content } = await render(stranka);
+---
+
+<Zaklad
+	titulek={stranka.data.titulek}
+	popis={stranka.data.popis_pro_vyhledavace ?? stranka.data.perex}
+>
+	<section class="hero">
+		<div class="obal">
+			<span class="stitek">{stranka.data.nazev_v_menu}</span>
+			<h1>{stranka.data.titulek}</h1>
+			{stranka.data.perex && <p class="perex">{stranka.data.perex}</p>}
+		</div>
+	</section>
+
+	<div class="obal">
+		<article class="text uzky">
+			<Content />
+		</article>
+
+		{stranka.data.sekce === 'druzstva' && <Druzstva />}
+		{stranka.data.sekce === 'kontakty' && <Kontakty />}
+	</div>
+</Zaklad>

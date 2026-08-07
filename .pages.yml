@@ -1,0 +1,267 @@
+# Konfigurace Pages CMS (app.pagescms.org).
+# Popisuje, co půjde na webu editovat a jak se to zobrazí v editoru.
+# Pole musí odpovídat schématům v src/content.config.ts – když přidáte pole sem,
+# přidejte ho i tam, jinak build spadne.
+
+media:
+  input: public/media
+  output: /media
+
+content:
+  # ---------------------------------------------------------------- STRÁNKY
+  - name: stranky
+    label: Stránky
+    description: Texty jednotlivých stránek webu. Nová stránka se sama objeví v menu.
+    type: collection
+    path: src/content/stranky
+    filename: '{fields.slug}.md'
+    view:
+      fields: [titulek, nazev_v_menu, poradi_v_menu, zobrazit_v_menu]
+      primary: titulek
+      sort: [poradi_v_menu, titulek]
+      default:
+        sort: poradi_v_menu
+        order: asc
+    fields:
+      - name: titulek
+        label: Titulek stránky
+        type: string
+        required: true
+        description: Velký nadpis nahoře na stránce a název v záložce prohlížeče.
+
+      - name: slug
+        label: Adresa stránky
+        type: string
+        required: true
+        pattern:
+          regex: '^[a-z0-9-]+$'
+          message: Použijte jen malá písmena bez diakritiky, číslice a pomlčky (např. o-oddile).
+        description: >-
+          Část adresy za lomítkem, např. „o-oddile" → www.sachytynec.cz/o-oddile.
+          Hodnotu „domu" má vyhrazenou domovská stránka – neměňte ji a nepoužívejte podruhé.
+
+      - name: nazev_v_menu
+        label: Název v menu
+        type: string
+        required: true
+        description: Krátká varianta titulku do hlavní navigace.
+
+      - name: poradi_v_menu
+        label: Pořadí v menu
+        type: number
+        default: 99
+        options:
+          min: 1
+          step: 1
+        description: Menší číslo = víc vlevo. Domovská stránka má 1.
+
+      - name: zobrazit_v_menu
+        label: Zobrazit v menu
+        type: boolean
+        default: true
+        description: Vypnutím stránka z menu zmizí, ale zůstane dostupná na své adrese.
+
+      - name: perex
+        label: Perex
+        type: text
+        description: Jedna až dvě věty pod nadpisem. Ukazuje se i na rozcestníku na úvodní stránce.
+
+      - name: popis_pro_vyhledavace
+        label: Popis pro vyhledávače
+        type: text
+        description: Text do výsledků vyhledávání (ideálně do 160 znaků). Když zůstane prázdný, použije se perex.
+
+      - name: sekce
+        label: Automatický blok pod textem
+        type: select
+        default: zadna
+        options:
+          values:
+            - { value: zadna, label: Žádný }
+            - { value: druzstva, label: Přehled družstev }
+            - { value: kontakty, label: Kontaktní osoby a adresa }
+        description: >-
+          Pod ručně psaný text stránky se připojí blok generovaný z dat.
+          Přehled družstev patří na stránku Družstva, kontakty na stránku Kontakt.
+
+      - name: body
+        label: Text stránky
+        type: rich-text
+        description: Hlavní obsah. Nadpisy používejte od úrovně 2 – jednička je titulek stránky.
+
+  # --------------------------------------------------------------- DRUŽSTVA
+  - name: druzstva
+    label: Družstva
+    description: Týmy oddílu. Výsledky a tabulky se sem nepíšou, jen se na ně odkazuje.
+    type: collection
+    path: src/content/druzstva
+    view:
+      fields: [nazev, soutez, poradi]
+      primary: nazev
+      sort: [poradi, nazev]
+      default:
+        sort: poradi
+        order: asc
+    fields:
+      - name: nazev
+        label: Název družstva
+        type: string
+        required: true
+        description: Např. „TJ JAWA Brodce A".
+
+      - name: soutez
+        label: Soutěž
+        type: string
+        required: true
+        description: Např. „Krajská soutěž Středočeského kraje".
+
+      - name: poradi
+        label: Pořadí ve výpisu
+        type: number
+        default: 99
+        options:
+          min: 1
+          step: 1
+
+      - name: kapitan
+        label: Kapitán
+        type: string
+
+      - name: hraci_den
+        label: Hrací termín
+        type: string
+        description: Např. „neděle dopoledne, zpravidla od 9:00".
+
+      - name: odkaz_vysledky
+        label: Odkaz na výsledky a tabulku
+        type: string
+        pattern:
+          regex: '^https://'
+          message: Vložte celou adresu včetně https://
+        description: Adresa soutěže na db.chess.cz. Zkopírujte ji z prohlížeče.
+
+      - name: odkaz_soupiska
+        label: Odkaz na soupisku
+        type: string
+        pattern:
+          regex: '^https://'
+          message: Vložte celou adresu včetně https://
+        description: Adresa soupisky družstva na db.chess.cz.
+
+      - name: body
+        label: Popis družstva
+        type: rich-text
+        description: Dvě tři věty o družstvu. Klidně nechte prázdné.
+
+  # --------------------------------------------------------------- KONTAKTY
+  - name: kontakty
+    label: Kontaktní osoby
+    description: Lidé, na které se dá obrátit. Zobrazují se na stránce Kontakt.
+    type: collection
+    path: src/content/kontakty
+    view:
+      fields: [jmeno, role, email, poradi]
+      primary: jmeno
+      sort: [poradi, jmeno]
+      default:
+        sort: poradi
+        order: asc
+    fields:
+      - name: jmeno
+        label: Jméno a příjmení
+        type: string
+        required: true
+
+      - name: role
+        label: Role v oddíle
+        type: string
+        required: true
+        description: Např. „Předseda oddílu" nebo „Trénink mládeže".
+
+      - name: email
+        label: E-mail
+        type: string
+        description: Zobrazí se veřejně jako odkaz. Nechcete-li ho zveřejnit, nechte prázdné.
+
+      - name: telefon
+        label: Telefon
+        type: string
+        description: Zobrazí se veřejně jako odkaz. Nechcete-li ho zveřejnit, nechte prázdné.
+
+      - name: poradi
+        label: Pořadí ve výpisu
+        type: number
+        default: 99
+        options:
+          min: 1
+          step: 1
+
+      - name: body
+        label: Poznámka
+        type: rich-text
+        description: Krátká věta, s čím se na člověka obracet.
+
+  # -------------------------------------------------------------- NASTAVENÍ
+  - name: nastaveni
+    label: Nastavení webu
+    description: Údaje, které se opakují na víc místech – v hlavičce, patičce a na stránce Kontakt.
+    type: file
+    path: src/data/nastaveni.json
+    fields:
+      - name: nazev_oddilu
+        label: Plný název oddílu
+        type: string
+        required: true
+
+      - name: kratky_nazev
+        label: Krátký název
+        type: string
+        required: true
+        description: Zobrazuje se v hlavičce vedle loga a v názvu záložky prohlížeče.
+
+      - name: podtitul
+        label: Podtitul
+        type: string
+        description: Krátká charakteristika nad hlavním nadpisem úvodní stránky.
+
+      - name: email
+        label: E-mail oddílu
+        type: string
+
+      - name: telefon
+        label: Telefon oddílu
+        type: string
+        description: Nepovinné. Prázdné pole se nikde nezobrazí.
+
+      - name: adresa_herny
+        label: Adresa herny
+        type: text
+        required: true
+
+      - name: odkaz_mapa
+        label: Odkaz na mapu
+        type: string
+        description: Odkaz na místo v mapy.com nebo Google Maps.
+
+      - name: odkaz_oddil_v_db
+        label: Oddíl v databázi ŠSČR
+        type: string
+        description: Adresa oddílu na db.chess.cz.
+
+      - name: odkaz_svaz
+        label: Šachový svaz ČR
+        type: string
+
+      - name: odkaz_rozcestnik
+        label: Rozcestník aplikací
+        type: string
+        description: Odkaz v patičce na app.sachytynec.cz.
+
+      - name: odkaz_pgn_base
+        label: PGN Base
+        type: string
+        description: Odkaz v patičce na pgn.sachytynec.cz.
+
+      - name: paticka_poznamka
+        label: Poznámka v patičce
+        type: text

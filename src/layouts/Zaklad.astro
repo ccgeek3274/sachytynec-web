@@ -1,0 +1,53 @@
+---
+import Hlavicka from '../components/Hlavicka.astro';
+import Paticka from '../components/Paticka.astro';
+import nastaveni from '../data/nastaveni.json';
+import '../styles/global.css';
+
+interface Props {
+	titulek: string;
+	popis?: string;
+}
+
+const { titulek, popis } = Astro.props;
+const celyTitulek = `${titulek} | ${nastaveni.kratky_nazev}`;
+const popisStranky = popis ?? nastaveni.podtitul;
+const kanonicka = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="cs">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{celyTitulek}</title>
+		<meta name="description" content={popisStranky} />
+		<link rel="canonical" href={kanonicka} />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<meta name="theme-color" content="#2e4a34" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={nastaveni.nazev_oddilu} />
+		<meta property="og:title" content={celyTitulek} />
+		<meta property="og:description" content={popisStranky} />
+		<meta property="og:url" content={kanonicka} />
+		<meta property="og:locale" content="cs_CZ" />
+
+		<link rel="sitemap" href="/sitemap-index.xml" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+		/>
+	</head>
+	<body>
+		<a class="preskocit" href="#obsah">Přeskočit na obsah</a>
+		<Hlavicka />
+		<main id="obsah">
+			<slot />
+		</main>
+		<Paticka />
+	</body>
+</html>

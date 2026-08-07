@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import nastaveni from '../data/nastaveni.json';
+import { cestaKeStrance } from '../utils/cesty';
+
+// Menu se skládá samo z kolekce „stranky" – nová stránka v CMS = nová položka v menu.
+const stranky = await getCollection('stranky', ({ data }) => data.zobrazit_v_menu);
+const polozky = stranky
+	.sort((a, b) => a.data.poradi_v_menu - b.data.poradi_v_menu)
+	.map((s) => ({ cesta: cestaKeStrance(s.data.slug), nazev: s.data.nazev_v_menu }));
+
+const tady = Astro.url.pathname.replace(/\/+$/, '') || '/';
+---
+
+<header class="hlavicka">
+	<div class="obal hlavicka__obal">
+		<a class="znacka" href="/">
+			<img src="/logo.svg" alt="" width="40" height="40" aria-hidden="true" />
+			<span>
+				<span class="znacka__nazev">{nastaveni.kratky_nazev}</span>
+				<span class="znacka__podtitul">TJ JAWA Brodce</span>
+			</span>
+		</a>
+
+		<nav class="navigace" aria-label="Hlavní navigace">
+			<ul>
+				{
+					polozky.map((p) => (
+						<li>
+							<a href={p.cesta} aria-current={tady === p.cesta ? 'page' : undefined}>
+								{p.nazev}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+	</div>
+</header>
