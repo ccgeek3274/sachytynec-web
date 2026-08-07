@@ -55,6 +55,7 @@ npm run check     # zkontroluje, jestli v obsahu nechybí povinné pole
 | Kontaktní osoby | `src/content/kontakty/*.md` |
 | Adresa herny, e-mail, odkazy v patičce | `src/data/nastaveni.json` |
 | Logo a favicona | `public/logo.svg`, `public/favicon.svg` |
+| Obrázek při sdílení odkazu | `public/nahled.png` (1200 × 630 px) |
 | Barvy, písma, vzhled | `src/styles/global.css` |
 
 Každý soubor v `src/content/stranky/` má nahoře mezi `---` takzvaný frontmatter —
@@ -86,9 +87,10 @@ Předpoklad: repozitář je nahraný na GitHubu.
    | Build output directory | `dist` |
    | Root directory | *(prázdné)* |
 
-4. V **Environment variables** přidejte `NODE_VERSION` = `20`
-   (jinak Cloudflare může použít starší Node, na kterém build neprojde).
-5. **Save and Deploy.**
+4. **Save and Deploy.**
+
+Verzi Node nastavovat nemusíte — je v souboru `.node-version` a Cloudflare
+si ji přečte sám.
 
 Od té chvíle se web sestaví sám při každém commitu do `main` — tedy i po každé
 úpravě z Pages CMS. Nasazení trvá zhruba minutu.
@@ -165,3 +167,24 @@ Text stránky v Markdownu.
 
 Pole `sekce` umí pod text připojit generovaný blok: `druzstva` (přehled týmů)
 nebo `kontakty` (lidé a adresa). Většina stránek má `zadna`.
+
+---
+
+## Poznámky k technickému stavu
+
+Ověřeno při vzniku webu:
+
+- build i `npm run check` procházejí bez chyb a varování,
+- automatický audit přístupnosti (axe-core, WCAG 2.1 AA) nehlásí na žádné
+  stránce nic — v šířce 1280 px i 390 px,
+- layout nepřetéká ani na 320 px,
+- `prefers-reduced-motion: reduce` vypne přechody i plynulé posouvání,
+- chybný zápis pole `slug` shodí build s českou hláškou, takže se špatná
+  adresa nedostane na web.
+
+Hotový web má kolem 200 kB včetně náhledového obrázku a neobsahuje žádný
+JavaScript. Jediná externí závislost za běhu jsou písma z Google Fonts.
+
+Údaje o oddíle se do hlavičky stránek vypisují i strukturovaně
+(schema.org `SportsOrganization`) — berou se z `nastaveni.json`, takže se
+o ně není potřeba starat zvlášť.
