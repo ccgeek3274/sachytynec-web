@@ -15,7 +15,7 @@ sekce: zadna
 Chodit můžete pravidelně i jednou za čas, docházka se u nás nehlídá.
 
 O víkendech se hrají zápasy soutěží družstev – ty mají vlastní termíny,
-viz stránka [Družstva a soutěže](/druzstva).
+viz stránka [Družstva a soutěže](/druzstva/).
 
 ## Kde hrajeme
 
@@ -37,7 +37,7 @@ nic učit, jen dorazit.
 ## Jak se přidat
 
 1. Napište nám na [sachy@sachytynec.cz](mailto:sachy@sachytynec.cz)
-   nebo se ozvěte někomu z [kontaktů](/kontakt).
+   nebo se ozvěte někomu z [kontaktů](/kontakt/).
 2. Domluvíme se na čtvrtku, kdy dorazíte – ať na vás někdo čeká.
 3. První návštěvy jsou nezávazné a zdarma. Když se vám u nás bude líbit,
    vyřídíme členství.

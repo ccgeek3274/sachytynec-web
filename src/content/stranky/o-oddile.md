@@ -33,7 +33,7 @@ a účast v soutěžích družstev.
 
 Scházíme se v klubovně TJ JAWA Brodce v Týnci nad Sázavou. Klubovna je
 v přízemí, zaparkovat se dá přímo u budovy. Přesnou adresu a odkaz na mapu
-najdete na stránce [Kontakt](/kontakt).
+najdete na stránce [Kontakt](/kontakt/).
 
 ## Členství
 
