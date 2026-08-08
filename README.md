@@ -27,7 +27,7 @@ prohlížeč partií [pgn.sachytynec.cz](https://pgn.sachytynec.cz).
 
 ## Lokální spuštění
 
-Potřebujete [Node.js](https://nodejs.org) 20 nebo novější.
+Potřebujete [Node.js](https://nodejs.org) 22.12 nebo novější (vyžaduje ho Astro).
 
 ```bash
 npm install     # jednorázově, stáhne závislosti
