@@ -4,39 +4,23 @@ slug: o-oddile
 nazev_v_menu: O oddíle
 poradi_v_menu: 2
 zobrazit_v_menu: true
-perex: Kdo jsme, jak dlouho v Týnci hrajeme a kde nás najdete.
-popis_pro_vyhledavace: Historie a současnost šachového oddílu TJ JAWA Brodce v Týnci nad Sázavou.
+perex: Šachy se v Týnci nad Sázavou hrají od roku 1942. Oddíl v dnešní podobě funguje od roku 1993.
+popis_pro_vyhledavace: Šachový oddíl TJ JAWA Brodce v Týnci nad Sázavou – historie od roku 1942, sídlo a hrací místnost.
 sekce: zadna
 ---
 
-## Kdo jsme
+Tradice šachu v Týnci nad Sázavou se začala psát **9. září 1942**.
+Šachový oddíl TJ JAWA Brodce na ni navázal a jako spolek vznikl
+**23. srpna 1993**.
 
-Šachový oddíl je jedním z oddílů Tělovýchovné jednoty JAWA Brodce.
-Aktuálně nás je zhruba dvacet – od hráčů, kteří odehráli desítky sezón
-krajských soutěží, po děti, které se učí zapisovat partii.
+Rádi v našich řadách uvítáme nové členy — děti i dospělé.
 
-Fungujeme na dobrovolnické bázi. Nikdo u nás není zaměstnaný trenér,
-o chod oddílu se stará několik lidí ve volném čase. Členské příspěvky
-pokrývají startovné v soutěžích, materiál a nájem klubovny.
+## Kde hrajeme
 
-## Trochu historie
+Dům s pečovatelskou službou, Okružní 520, 257 41 Týnec nad Sázavou.
 
-Šachy se v Brodcích hrají od padesátých let, kdy oddíl vznikl při závodním
-klubu tehdejší JAWY. Nejsilnější období měl oddíl v osmdesátých letech,
-kdy áčko hrálo krajský přebor. Po roce 1989 přišel útlum, ale hrálo se
-prakticky nepřetržitě dál – jen v menším.
+## Údaje o spolku
 
-Dnes navazujeme na to nejlepší z té doby: pravidelné čtvrteční partie
-a účast v soutěžích družstev.
-
-## Kde sídlíme
-
-Scházíme se v klubovně TJ JAWA Brodce v Týnci nad Sázavou. Klubovna je
-v přízemí, zaparkovat se dá přímo u budovy. Přesnou adresu a odkaz na mapu
-najdete na stránce [Kontakt](/kontakt/).
-
-## Členství
-
-Členem se může stát kdokoli bez ohledu na výkonnost. Roční příspěvek
-je symbolický a hradí se na začátku sezóny. První měsíc si můžete
-chodit hrát nezávazně a rozmyslet si to.
+- **Název:** TJ JAWA Brodce z.s.
+- **Sídlo:** Brodce 32, 257 41 Týnec nad Sázavou
+- **IČ:** 48927805

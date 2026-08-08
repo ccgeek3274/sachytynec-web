@@ -3,67 +3,82 @@ import { getCollection, render } from 'astro:content';
 import OdkazVen from './OdkazVen.astro';
 import nastaveni from '../data/nastaveni.json';
 
-const druzstva = (await getCollection('druzstva')).sort((a, b) => a.data.poradi - b.data.poradi);
+const vsechna = await getCollection('druzstva');
 
 const vykreslena = await Promise.all(
-	druzstva.map(async (d) => ({ data: d.data, Popis: (await render(d)).Content }))
+	vsechna.map(async (d) => ({ data: d.data, Popis: (await render(d)).Content }))
 );
+
+// Seskupení po ročnících, nejnovější nahoře.
+const rocniky = [...new Set(vykreslena.map((d) => d.data.sezona))]
+	.sort()
+	.reverse()
+	.map((sezona) => ({
+		sezona,
+		druzstva: vykreslena
+			.filter((d) => d.data.sezona === sezona)
+			.sort((a, b) => a.data.poradi - b.data.poradi),
+	}));
 ---
 
-<section class="sekce" aria-labelledby="nadpis-druzstva">
-	<div class="sekce__nadpis">
-		<h2 id="nadpis-druzstva">Naše družstva</h2>
-		<span class="sekce__linka" aria-hidden="true"></span>
-	</div>
+{
+	rocniky.map(({ sezona, druzstva }) => (
+		<section class="sekce" aria-labelledby={`rocnik-${sezona.replace('/', '-')}`}>
+			<div class="sekce__nadpis">
+				<h2 id={`rocnik-${sezona.replace('/', '-')}`}>Sezóna {sezona}</h2>
+				<span class="sekce__linka" aria-hidden="true" />
+			</div>
 
-	<ul class="druzstva">
-		{
-			vykreslena.map(({ data, Popis }) => (
-				<li class="druzstvo">
-					<h3>{data.nazev}</h3>
-					<p class="druzstvo__soutez">{data.soutez}</p>
+			<ul class="druzstva">
+				{druzstva.map(({ data, Popis }) => (
+					<li class="druzstvo">
+						<h3>{data.nazev}</h3>
+						<p class="druzstvo__soutez">{data.soutez}</p>
 
-					<div class="druzstvo__popis">
-						<Popis />
-					</div>
+						<div class="druzstvo__popis">
+							<Popis />
+						</div>
 
-					{(data.kapitan || data.hraci_den) && (
-						<dl class="udaje">
-							{data.kapitan && (
-								<div>
-									<dt>Kapitán</dt>
-									<dd>{data.kapitan}</dd>
-								</div>
-							)}
-							{data.hraci_den && (
-								<div>
-									<dt>Hrací termín</dt>
-									<dd>{data.hraci_den}</dd>
-								</div>
-							)}
-						</dl>
-					)}
-
-					<div class="odkazy">
-						{data.odkaz_vysledky && (
-							<OdkazVen href={data.odkaz_vysledky} trida="odkaz-ven">
-								Výsledky a tabulka
-							</OdkazVen>
+						{(data.kapitan || data.hraci_den) && (
+							<dl class="udaje">
+								{data.kapitan && (
+									<div>
+										<dt>Kapitán</dt>
+										<dd>{data.kapitan}</dd>
+									</div>
+								)}
+								{data.hraci_den && (
+									<div>
+										<dt>Hrací termín</dt>
+										<dd>{data.hraci_den}</dd>
+									</div>
+								)}
+							</dl>
 						)}
-						{data.odkaz_soupiska && (
-							<OdkazVen href={data.odkaz_soupiska} trida="odkaz-ven">
-								Soupiska družstva
-							</OdkazVen>
-						)}
-					</div>
-				</li>
-			))
-		}
-	</ul>
 
-	<p class="poznamka">
-		Odkazy vedou do databáze Šachového svazu ČR – tam jsou výsledky, tabulky i soupisky
-		vždy aktuální. Celý oddíl najdete na{' '}
-		<OdkazVen href={nastaveni.odkaz_oddil_v_db}>db.chess.cz</OdkazVen>.
-	</p>
-</section>
+						{(data.odkaz_vysledky || data.odkaz_soupiska) && (
+							<div class="odkazy">
+								{data.odkaz_vysledky && (
+									<OdkazVen href={data.odkaz_vysledky} trida="odkaz-ven">
+										Výsledky a tabulka
+									</OdkazVen>
+								)}
+								{data.odkaz_soupiska && (
+									<OdkazVen href={data.odkaz_soupiska} trida="odkaz-ven">
+										Soupiska družstva
+									</OdkazVen>
+								)}
+							</div>
+						)}
+					</li>
+				))}
+			</ul>
+		</section>
+	))
+}
+
+<p class="poznamka">
+	Soutěže vede <OdkazVen href={nastaveni.odkaz_krajsky_svaz}>Středočeský šachový svaz</OdkazVen>,
+	výsledky a soupisky najdete na webu{' '}
+	<OdkazVen href={nastaveni.odkaz_svaz}>Šachového svazu ČR</OdkazVen>.
+</p>

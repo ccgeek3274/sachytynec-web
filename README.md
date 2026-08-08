@@ -51,7 +51,8 @@ npm run check     # zkontroluje, jestli v obsahu nechybí povinné pole
 | Co chcete změnit | Soubor |
 | --- | --- |
 | Text stránek (Domů, O oddíle, Trénink, Družstva, Kontakt) | `src/content/stranky/*.md` |
-| Družstva a odkazy na jejich výsledky | `src/content/druzstva/*.md` |
+| **Aktuality na úvodní stránce** | pole `aktuality` v `src/content/stranky/domu.md` |
+| Družstva podle ročníků | `src/content/druzstva/*.md` |
 | Kontaktní osoby | `src/content/kontakty/*.md` |
 | Adresa herny, e-mail, odkazy v patičce | `src/data/nastaveni.json` |
 | Logo a favicona | `public/logo.svg`, `public/favicon.svg` |
@@ -68,6 +69,23 @@ Struktura polí je popsaná dvakrát a obě musí souhlasit:
 - `.pages.yml` — jak pole vypadají v editoru Pages CMS
 
 Když přidáváte nové pole, doplňte ho do obou souborů.
+
+### Aktuality
+
+Úvodní stránka nese blok **Aktuálně** — krátká oznámení, co je zrovna důležité.
+V Pages CMS je najdete u stránky Domů jako opakovatelný seznam (datum + text),
+nejnovější se zobrazuje nahoře. Co přestane platit, prostě smažte.
+Když seznam vyprázdníte, blok ze stránky zmizí.
+
+### Družstva po ročnících
+
+Jeden soubor = jedno družstvo v jedné sezóně. Pole `sezona` (tvar `2026/2027`)
+řídí zařazení — stránka se sama rozdělí na oddíly podle ročníků, nejnovější
+nahoře. Nová sezóna se tedy zakládá tak, že přidáte družstva s novým ročníkem;
+ta stará zůstanou jako archiv.
+
+Odkazy na výsledky a soupisku nechte prázdné, dokud soutěž na webu svazu
+nevznikne — nevyplněný odkaz se nezobrazí.
 
 ---
 

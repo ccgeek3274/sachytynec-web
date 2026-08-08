@@ -1,14 +1,17 @@
 {
-  "nazev_oddilu": "TJ JAWA Brodce – šachy",
+  "nazev_oddilu": "Šachový oddíl TJ JAWA Brodce",
   "kratky_nazev": "Šachy Brodce",
   "podtitul": "Šachový oddíl v Týnci nad Sázavou",
-  "email": "sachy@sachytynec.cz",
+  "email": "klub@sachytynec.cz",
   "telefon": "",
-  "adresa_herny": "Klubovna TJ JAWA Brodce, Brodce, 257 41 Týnec nad Sázavou",
-  "odkaz_mapa": "https://mapy.com/",
-  "odkaz_oddil_v_db": "https://db.chess.cz/",
+  "adresa_herny": "Dům s pečovatelskou službou, Okružní 520, 257 41 Týnec nad Sázavou",
+  "sidlo_spolku": "TJ JAWA Brodce z.s., Brodce 32, 257 41 Týnec nad Sázavou",
+  "ic": "48927805",
+  "odkaz_mapa": "https://mapy.com/cs/?q=Okru%C5%BEn%C3%AD%20520%2C%20T%C3%BDnec%20nad%20S%C3%A1zavou",
+  "odkaz_oddil_v_db": "https://www.chess.cz/",
   "odkaz_svaz": "https://www.chess.cz/",
+  "odkaz_krajsky_svaz": "http://stcsach.cz/",
   "odkaz_rozcestnik": "https://app.sachytynec.cz",
   "odkaz_pgn_base": "https://pgn.sachytynec.cz",
-  "paticka_poznamka": "Web oddílu. Výsledky, tabulky a soupisky spravuje Šachový svaz ČR."
+  "paticka_poznamka": "Výsledky, tabulky a soupisky spravuje Šachový svaz ČR."
 }

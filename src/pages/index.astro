@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Zaklad from '../layouts/Zaklad.astro';
+import Aktuality from '../components/Aktuality.astro';
 import OdkazVen from '../components/OdkazVen.astro';
 import nastaveni from '../data/nastaveni.json';
 import { cestaKeStrance, DOMOVSKA_STRANKA } from '../utils/cesty';
@@ -30,6 +31,8 @@ const rozcestnik = vsechny
 	</section>
 
 	<div class="obal">
+		<Aktuality polozky={domu.data.aktuality} />
+
 		<article class="text uzky">
 			<Content />
 		</article>
@@ -64,11 +67,11 @@ const rozcestnik = vsechny
 			</div>
 
 			<div class="odkazy">
-				<OdkazVen href={nastaveni.odkaz_oddil_v_db} trida="odkaz-ven">
-					Výsledky a tabulky (db.chess.cz)
-				</OdkazVen>
 				<OdkazVen href={nastaveni.odkaz_svaz} trida="odkaz-ven">
 					Šachový svaz ČR
+				</OdkazVen>
+				<OdkazVen href={nastaveni.odkaz_krajsky_svaz} trida="odkaz-ven">
+					Středočeský šachový svaz
 				</OdkazVen>
 				<OdkazVen href={nastaveni.odkaz_pgn_base} trida="odkaz-ven">
 					PGN Base – prohlížeč partií

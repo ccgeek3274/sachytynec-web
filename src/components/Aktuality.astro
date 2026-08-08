@@ -1,0 +1,36 @@
+---
+interface Props {
+	polozky: { datum: Date; text: string }[];
+}
+
+const { polozky } = Astro.props;
+
+const format = new Intl.DateTimeFormat('cs-CZ', {
+	day: 'numeric',
+	month: 'numeric',
+	year: 'numeric',
+});
+
+// Nejnovější nahoře.
+const serazene = [...polozky].sort((a, b) => b.datum.getTime() - a.datum.getTime());
+---
+
+{
+	serazene.length > 0 && (
+		<section class="sekce" aria-labelledby="nadpis-aktualne">
+			<div class="sekce__nadpis">
+				<h2 id="nadpis-aktualne">Aktuálně</h2>
+				<span class="sekce__linka" aria-hidden="true" />
+			</div>
+
+			<ul class="aktuality">
+				{serazene.map((p) => (
+					<li>
+						<time datetime={p.datum.toISOString().slice(0, 10)}>{format.format(p.datum)}</time>
+						<span>{p.text}</span>
+					</li>
+				))}
+			</ul>
+		</section>
+	)
+}

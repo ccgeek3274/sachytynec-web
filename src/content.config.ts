@@ -25,13 +25,24 @@ const stranky = defineCollection({
 		popis_pro_vyhledavace: z.string().optional(),
 		// Připojí pod text stránky automaticky generovaný blok.
 		sekce: z.enum(['zadna', 'druzstva', 'kontakty']).default('zadna'),
+		// Krátká oznámení „co je teď důležité". Používá je jen úvodní stránka.
+		aktuality: z
+			.array(
+				z.object({
+					datum: z.coerce.date(),
+					text: z.string(),
+				})
+			)
+			.default([]),
 	}),
 });
 
-// Jedno družstvo = jeden soubor. Výsledky a tabulky nedržíme, jen odkazujeme na svaz.
+// Jedno družstvo v jednom ročníku = jeden soubor.
+// Výsledky a tabulky nedržíme, jen odkazujeme na svaz.
 const druzstva = defineCollection({
 	loader: glob({ pattern: '**/*.md', base: './src/content/druzstva' }),
 	schema: z.object({
+		sezona: z.string().regex(/^\d{4}\/\d{4}$/, 'Ročník zapište ve tvaru 2026/2027'),
 		nazev: z.string(),
 		soutez: z.string(),
 		poradi: z.number().default(99),

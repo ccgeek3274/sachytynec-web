@@ -10,8 +10,8 @@ const rok = new Date().getFullYear();
 		<div class="paticka__mrizka">
 			<div>
 				<h2>Oddíl</h2>
-				<p>{nastaveni.nazev_oddilu}</p>
-				<p>{nastaveni.adresa_herny}</p>
+				<p>{nastaveni.sidlo_spolku}</p>
+				<p>IČ {nastaveni.ic}</p>
 				{
 					nastaveni.email && (
 						<p>
@@ -25,7 +25,9 @@ const rok = new Date().getFullYear();
 				<h2>Výsledky a soutěže</h2>
 				<ul>
 					<li><OdkazVen href={nastaveni.odkaz_svaz}>Šachový svaz ČR</OdkazVen></li>
-					<li><OdkazVen href={nastaveni.odkaz_oddil_v_db}>Databáze db.chess.cz</OdkazVen></li>
+					<li>
+						<OdkazVen href={nastaveni.odkaz_krajsky_svaz}>Středočeský šachový svaz</OdkazVen>
+					</li>
 				</ul>
 			</div>
 

@@ -1,9 +1,7 @@
 ---
-jmeno: Jan Novák
-role: Předseda oddílu, kapitán A družstva
-email: predseda@sachytynec.cz
-telefon: ""
+jmeno: Karel Jukl
+role: Předseda oddílu
+email: klub@sachytynec.cz
+telefon: "602 123 971"
 poradi: 1
 ---
-
-Zařizuje chod oddílu, členské příspěvky a přihlášky do soutěží.

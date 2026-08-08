@@ -84,6 +84,23 @@ content:
           Pod ručně psaný text stránky se připojí blok generovaný z dat.
           Přehled družstev patří na stránku Družstva, kontakty na stránku Kontakt.
 
+      - name: aktuality
+        label: Aktuálně (jen úvodní stránka)
+        type: object
+        list: true
+        description: >-
+          Krátká oznámení, co je zrovna důležité. Zobrazují se na úvodní stránce,
+          nejnovější nahoře. Co přestane platit, smažte.
+        fields:
+          - name: datum
+            label: Datum
+            type: date
+            required: true
+          - name: text
+            label: Text
+            type: text
+            required: true
+
       - name: body
         label: Text stránky
         type: rich-text
@@ -92,17 +109,28 @@ content:
   # --------------------------------------------------------------- DRUŽSTVA
   - name: druzstva
     label: Družstva
-    description: Týmy oddílu. Výsledky a tabulky se sem nepíšou, jen se na ně odkazuje.
+    description: >-
+      Družstva po ročnících – jeden soubor = jedno družstvo v jedné sezóně.
+      Výsledky a tabulky se sem nepíšou, jen se na ně odkazuje.
     type: collection
     path: src/content/druzstva
     view:
-      fields: [nazev, soutez, poradi]
+      fields: [sezona, nazev, soutez, kapitan]
       primary: nazev
-      sort: [poradi, nazev]
+      sort: [sezona, poradi, nazev]
       default:
-        sort: poradi
-        order: asc
+        sort: sezona
+        order: desc
     fields:
+      - name: sezona
+        label: Sezóna
+        type: string
+        required: true
+        pattern:
+          regex: '^\d{4}/\d{4}$'
+          message: Zapište ročník ve tvaru 2026/2027.
+        description: Ročník soutěže, např. 2026/2027. Na stránce se družstva řadí podle něj.
+
       - name: nazev
         label: Název družstva
         type: string
@@ -238,6 +266,15 @@ content:
         type: text
         required: true
 
+      - name: sidlo_spolku
+        label: Sídlo spolku
+        type: text
+        description: Zobrazuje se v patičce.
+
+      - name: ic
+        label: IČ
+        type: string
+
       - name: odkaz_mapa
         label: Odkaz na mapu
         type: string
@@ -246,11 +283,16 @@ content:
       - name: odkaz_oddil_v_db
         label: Oddíl v databázi ŠSČR
         type: string
-        description: Adresa oddílu na db.chess.cz.
+        description: Adresa oddílu na db.chess.cz, až bude k dispozici.
 
       - name: odkaz_svaz
         label: Šachový svaz ČR
         type: string
+
+      - name: odkaz_krajsky_svaz
+        label: Středočeský šachový svaz
+        type: string
+        description: Pořadatel krajských soutěží družstev.
 
       - name: odkaz_rozcestnik
         label: Rozcestník aplikací

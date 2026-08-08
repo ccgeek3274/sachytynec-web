@@ -4,44 +4,22 @@ slug: trenink
 nazev_v_menu: Trénink
 poradi_v_menu: 3
 zobrazit_v_menu: true
-perex: Scházíme se každý čtvrtek od 18:00 v klubovně v Brodcích. Přijít může kdokoli – šachovnice i soupeře máme.
-popis_pro_vyhledavace: Kdy a kde trénuje šachový oddíl TJ JAWA Brodce a jak se k nám přidat.
+perex: Každý pátek od 17:00 v Domě s pečovatelskou službou. Pro děti i dospělé, začátečníky nevyjímaje.
+popis_pro_vyhledavace: Tréninky šachového oddílu TJ JAWA Brodce – každý pátek od 17:00, Okružní 520, Týnec nad Sázavou.
 sekce: zadna
 ---
 
-## Kdy hrajeme
+**Každý pátek od 17:00**
+Dům s pečovatelskou službou, Okružní 520, Týnec nad Sázavou
 
-**Čtvrtek 18:00 – 21:00**, celoročně kromě letních prázdnin a svátků.
-Chodit můžete pravidelně i jednou za čas, docházka se u nás nehlídá.
+Šachovnice a hodiny máme, nosit si nemusíte nic.
 
-O víkendech se hrají zápasy soutěží družstev – ty mají vlastní termíny,
-viz stránka [Družstva a soutěže](/druzstva/).
+## Pro koho
 
-## Kde hrajeme
-
-V klubovně TJ JAWA Brodce. Šachovnice, hodiny i zapisovací archy jsou
-k dispozici, nic si nosit nemusíte.
-
-## Pro koho to je
-
-**Dospělí** – od úplných začátečníků po hráče s ratingem. Většina večera
-patří vážným partiím s hodinami, na závěr bývají bleskovky.
-
-**Mládež od zhruba osmi let** – děti hrají v první části večera, zhruba
-do 19:30, a věnuje se jim někdo ze zkušenějších hráčů. Rodiče můžou
-zůstat v klubovně nebo si mezitím zahrát taky.
-
-**Začátečníci** – pravidla vás naučíme na místě. Není potřeba se předem
-nic učit, jen dorazit.
+Pro děti i dospělé, bez ohledu na výkonnost. Začátečníky pravidla naučíme
+na místě.
 
 ## Jak se přidat
 
-1. Napište nám na [sachy@sachytynec.cz](mailto:sachy@sachytynec.cz)
-   nebo se ozvěte někomu z [kontaktů](/kontakt/).
-2. Domluvíme se na čtvrtku, kdy dorazíte – ať na vás někdo čeká.
-3. První návštěvy jsou nezávazné a zdarma. Když se vám u nás bude líbit,
-   vyřídíme členství.
-
-## Co si vzít s sebou
-
-Nic zvláštního. Hodí se přezůvky a dobrá nálada.
+Napište na [klub@sachytynec.cz](mailto:klub@sachytynec.cz) a domluvíme se
+na pátku, kdy dorazíte. První návštěvy jsou nezávazné.
