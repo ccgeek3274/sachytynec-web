@@ -75,25 +75,24 @@ Když přidáváte nové pole, doplňte ho do obou souborů.
 
 Předpoklad: repozitář je nahraný na GitHubu.
 
-1. V [Cloudflare dashboardu](https://dash.cloudflare.com) otevřete
-   **Workers & Pages → Create → Pages → Connect to Git**.
-2. Vyberte tento repozitář a větev `main`.
-3. Nastavte build:
+**Hotovo, nic nastavovat nemusíte.** Projekt už na Cloudflare Pages existuje
+a je napojený na tento repozitář:
 
-   | Položka | Hodnota |
-   | --- | --- |
-   | Framework preset | Astro |
-   | Build command | `npm run build` |
-   | Build output directory | `dist` |
-   | Root directory | *(prázdné)* |
+| Položka | Hodnota |
+| --- | --- |
+| Projekt | `sachytynec-web` |
+| Zkušební adresa | https://sachytynec-web.pages.dev |
+| Produkční větev | `main` |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Verze Node | z `.node-version` (22) |
 
-4. **Save and Deploy.**
+Web se sestaví sám při každém commitu do `main` — tedy i po každé úpravě
+z Pages CMS. Nasazení trvá zhruba minutu. Commity do jiných větví vytvoří
+náhledovou adresu, produkci neovlivní.
 
-Verzi Node nastavovat nemusíte — je v souboru `.node-version` a Cloudflare
-si ji přečte sám.
-
-Od té chvíle se web sestaví sám při každém commitu do `main` — tedy i po každé
-úpravě z Pages CMS. Nasazení trvá zhruba minutu.
+Stav nasazení uvidíte v Cloudflare dashboardu ve **Workers & Pages →
+sachytynec-web → Deployments**.
 
 Web je čistě statický, **žádné serverové funkce (Workers/Functions) nepotřebuje.**
 
@@ -126,7 +125,10 @@ Editorům stačí dát na GitHubu roli **Write** k tomuto repozitáři, nic víc
 
 ## Doména www.sachytynec.cz
 
-1. V projektu na Cloudflare Pages otevřete **Custom domains → Set up a custom
+Zatím web běží jen na zkušební adrese `sachytynec-web.pages.dev`.
+Ostrou doménu přidáte takto:
+
+1. V projektu `sachytynec-web` otevřete **Custom domains → Set up a custom
    domain** a zadejte `www.sachytynec.cz`.
 2. Pokud je doména `sachytynec.cz` spravovaná ve stejném účtu Cloudflare,
    DNS záznam (CNAME na `<projekt>.pages.dev`) se vytvoří automaticky.
