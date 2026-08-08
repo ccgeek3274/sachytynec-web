@@ -22,4 +22,4 @@ na místě.
 ## Jak se přidat
 
 Napište na [klub@sachytynec.cz](mailto:klub@sachytynec.cz) a domluvíme se
-na pátku, kdy dorazíte. První návštěvy jsou nezávazné.
+na pátku, kdy dorazíte.

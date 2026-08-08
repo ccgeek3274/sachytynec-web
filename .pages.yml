@@ -299,11 +299,6 @@ content:
         type: string
         description: Odkaz v patičce na app.sachytynec.cz.
 
-      - name: odkaz_pgn_base
-        label: PGN Base
-        type: string
-        description: Odkaz v patičce na pgn.sachytynec.cz.
-
       - name: paticka_poznamka
         label: Poznámka v patičce
         type: text

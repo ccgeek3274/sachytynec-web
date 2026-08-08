@@ -10,8 +10,6 @@ sekce: zadna
 aktuality:
   - datum: 2026-08-07
     text: Do sezóny 2026/2027 přihlašujeme jedno družstvo — áčko do Krajské soutěže B.
-  - datum: 2026-08-07
-    text: Tréninky pokračují každý pátek od 17:00 v Domě s pečovatelskou službou.
 ---
 
 ## Kdy a kde
