@@ -55,7 +55,9 @@ npm run check     # zkontroluje, jestli v obsahu nechybí povinné pole
 | Družstva podle ročníků | `src/content/druzstva/*.md` |
 | Kontaktní osoby | `src/content/kontakty/*.md` |
 | Adresa herny, e-mail, odkazy v patičce | `src/data/nastaveni.json` |
-| Logo a favicona | `public/logo.svg`, `public/favicon.svg` |
+| Logo v hlavičce | `public/logo.png` (kreslené ve 120 px, zobrazuje se ve 40 px) |
+| Favicona (ikona v záložce prohlížeče) | `public/favicon.ico`, `public/favicon-96.png`, `public/apple-touch-icon.png` |
+| Kresba vedle titulku na úvodní stránce | `public/media/tns_hrad_kopec.png` |
 | Obrázek při sdílení odkazu | `public/nahled.png` (1200 × 630 px) |
 | Barvy, písma, vzhled | `src/styles/global.css` |
 

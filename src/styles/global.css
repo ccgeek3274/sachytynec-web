@@ -301,6 +301,25 @@ main {
 	margin-bottom: 0.4em;
 }
 
+/* Domovský hero: titulek a perex vlevo, kresba věže vpravo. */
+.hero__mrizka {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
+	align-items: center;
+	gap: clamp(1.5rem, 1rem + 3vw, 3.5rem);
+}
+
+.hero__obrazek {
+	width: 100%;
+	height: auto;
+	justify-self: end;
+}
+
+/* Vedle kresby by dekorativní šachovnice v rohu už jen rušila. */
+.hero--obrazek::after {
+	display: none;
+}
+
 .perex {
 	font-size: clamp(1.05rem, 1rem + 0.4vw, 1.25rem);
 	line-height: 1.55;
@@ -808,6 +827,19 @@ main {
 }
 
 /* ------------------------------------------------------------- responzív -- */
+
+/* Na užší obrazovce se kresba přesune pod text. */
+@media (max-width: 48rem) {
+	.hero__mrizka {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 2rem;
+	}
+
+	.hero__obrazek {
+		justify-self: start;
+		max-width: 15rem;
+	}
+}
 
 @media (max-width: 34rem) {
 	.hlavicka__obal {

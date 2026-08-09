@@ -22,11 +22,24 @@ const rozcestnik = vsechny
 ---
 
 <Zaklad titulek={domu.data.titulek} popis={domu.data.popis_pro_vyhledavace ?? domu.data.perex}>
-	<section class="hero">
-		<div class="obal">
-			<span class="stitek">{nastaveni.podtitul}</span>
-			<h1>{domu.data.titulek}</h1>
-			{domu.data.perex && <p class="perex">{domu.data.perex}</p>}
+	<section class="hero hero--obrazek">
+		<div class="obal hero__mrizka">
+			<div>
+				<span class="stitek">{nastaveni.podtitul}</span>
+				<h1>{domu.data.titulek}</h1>
+				{domu.data.perex && <p class="perex">{domu.data.perex}</p>}
+			</div>
+
+			{/* Kresba je jen ozdoba vedle titulku – pro čtečky ji přeskakujeme. */}
+			<img
+				class="hero__obrazek"
+				src="/media/tns_hrad_kopec.png"
+				alt=""
+				aria-hidden="true"
+				width="639"
+				height="530"
+				fetchpriority="high"
+			/>
 		</div>
 	</section>
 
