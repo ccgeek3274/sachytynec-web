@@ -1,4 +1,6 @@
 ---
+import { markdownNaHtml } from '../utils/markdown';
+
 interface Props {
 	polozky: { datum: Date; text: string }[];
 }
@@ -11,8 +13,12 @@ const format = new Intl.DateTimeFormat('cs-CZ', {
 	year: 'numeric',
 });
 
-// Nejnovější nahoře.
-const serazene = [...polozky].sort((a, b) => b.datum.getTime() - a.datum.getTime());
+// Nejnovější nahoře. Text je Markdown – může obsahovat odkazy i obrázky.
+const serazene = await Promise.all(
+	[...polozky]
+		.sort((a, b) => b.datum.getTime() - a.datum.getTime())
+		.map(async (p) => ({ ...p, html: await markdownNaHtml(p.text) }))
+);
 ---
 
 {
@@ -27,7 +33,7 @@ const serazene = [...polozky].sort((a, b) => b.datum.getTime() - a.datum.getTime
 				{serazene.map((p) => (
 					<li>
 						<time datetime={p.datum.toISOString().slice(0, 10)}>{format.format(p.datum)}</time>
-						<span>{p.text}</span>
+						<div class="aktualita__text" set:html={p.html} />
 					</li>
 				))}
 			</ul>

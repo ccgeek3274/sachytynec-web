@@ -527,8 +527,44 @@ main {
 	padding-top: 0.15rem;
 }
 
-.aktuality span {
+.aktualita__text {
 	flex: 1 1 16rem;
+}
+
+/* Text aktuality je Markdown – může nést odkazy, seznamy i obrázky. */
+.aktualita__text > :first-child {
+	margin-top: 0;
+}
+
+.aktualita__text > :last-child {
+	margin-bottom: 0;
+}
+
+.aktualita__text p {
+	margin-bottom: 0.6em;
+}
+
+.aktualita__text ul,
+.aktualita__text ol {
+	margin-bottom: 0.6em;
+	padding-left: 1.2em;
+}
+
+.aktualita__text img,
+.text img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	margin: 0.9rem 0 0;
+	border: 1px solid var(--linka);
+	border-radius: var(--radius);
+	background: var(--kremova);
+}
+
+/* V aktualitě je fotka doplněk, ne hlavní obsah – ať nepřeroste oznámení. */
+.aktualita__text img {
+	width: auto;
+	max-height: 15rem;
 }
 
 /* -------------------------------------------------------------- družstva -- */

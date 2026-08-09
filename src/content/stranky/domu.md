@@ -11,9 +11,10 @@ popis_pro_vyhledavace: Šachový oddíl TJ JAWA Brodce v Týnci nad Sázavou.
 sekce: zadna
 aktuality:
   - datum: 2026-08-07
-    text: |-
+    text: >-
       Do sezóny 2026/2027 přihlašujeme jedno družstvo — áčko do Krajské soutěže B.
-      https://www.stcsach.cz/rozdeleni-druzstev-sss-do-skupin-kp-ks-rp-stav-k-27-7-2026/
+      [Rozdělení družstev do
+      skupin](https://www.stcsach.cz/rozdeleni-druzstev-sss-do-skupin-kp-ks-rp-stav-k-27-7-2026/)
 ---
 ## Kdy a kde
 

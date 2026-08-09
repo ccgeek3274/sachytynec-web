@@ -77,6 +77,25 @@ V Pages CMS je najdete u stránky Domů jako opakovatelný seznam (datum + text)
 nejnovější se zobrazuje nahoře. Co přestane platit, prostě smažte.
 Když seznam vyprázdníte, blok ze stránky zmizí.
 
+Text aktuality je plnohodnotný editor: **odkazy, tučné písmo, seznamy
+i obrázky**. Fotka se vloží tlačítkem v liště editoru, nahraje se do
+`public/media` a v aktualitě se zmenší na výšku zhruba 15 řádků,
+aby oznámení nepřerostla.
+
+### Obrázky
+
+Obrázky jdou vkládat do aktualit i do textu kterékoli stránky. Ukládají se
+do `public/media` a **servírují se přesně tak, jak je nahrajete** — web je
+nezmenšuje.
+
+Fotky z telefonu proto před nahráním zmenšete, ideálně na šířku kolem
+1600 px. Neupravená fotka mívá 4–6 MB a na mobilních datech se stahuje
+zbytečně dlouho. Všem obrázkům se automaticky doplní odložené načítání
+(`loading="lazy"`), takže se stahují až když na ně návštěvník doroluje.
+
+Do pole „popis" (alt text) napište, co na obrázku je — přečtou ho odečítače
+obrazovky a zobrazí se, když se fotka nenačte.
+
 ### Družstva po ročnících
 
 Jeden soubor = jedno družstvo v jedné sezóně. Pole `sezona` (tvar `2026/2027`)

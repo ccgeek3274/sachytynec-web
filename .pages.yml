@@ -98,8 +98,12 @@ content:
             required: true
           - name: text
             label: Text
-            type: text
+            type: rich-text
             required: true
+            description: >-
+              Můžete použít odkazy, tučné písmo i obrázky. Obrázek vložíte tlačítkem
+              v liště editoru – nahraje se do složky media. Držte se pár řádků,
+              na dlouhé texty je lepší samostatná stránka.
 
       - name: body
         label: Text stránky
